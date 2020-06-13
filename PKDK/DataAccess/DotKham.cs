@@ -17,10 +17,16 @@ namespace QLPK.DataAccess
             return data.sExecuteNonQuery(ThamBien, ThamTri, "DOTKHAMID", 10);
         }
 
-        public void updateNgayTaiKham(String dotKhamID, DateTime ngayTK)
+        public void updateNgayTaiKham(String dotKhamID, Int32 soNgay)
         {
             LibDataDB2.ASDataProvider data = new LibDataDB2.ASDataProvider();
-            data.CommandText = "UPDATE PKDK.DOTKHAM SET NGAYTK = '" + ngayTK.ToString("yyyy-MM-dd") + "' WHERE DOTKHAMID = '" + dotKhamID + "'";
+            if (soNgay > 0)
+            {
+                DateTime ngayTK = DateTime.Today.AddDays(soNgay);
+                data.CommandText = "UPDATE PKDK.DOTKHAM SET NGAYTK = '" + ngayTK.ToString("yyyy-MM-dd") + "' WHERE DOTKHAMID = '" + dotKhamID + "'";
+            }
+            else
+                data.CommandText = "UPDATE PKDK.DOTKHAM SET NGAYTK = NULL WHERE DOTKHAMID = '" + dotKhamID + "'";
             data.CommandType = System.Data.CommandType.Text;
             data.ExecuteNonQuery();
         }
@@ -49,6 +55,22 @@ namespace QLPK.DataAccess
             data.ExecuteNonQuery();
             m_SQL = "Delete From PKDK.DotKham Where MaBN = '" + maBN + "'";
             data.CommandText = m_SQL;
+            data.ExecuteNonQuery();
+        }
+        public void updateGhiChu(String DotKhamID, String ghiChu)
+        {
+            LibDataDB2.ASDataProvider data = new LibDataDB2.ASDataProvider();
+            String m_SQL = "Update PKDK.DotKham set GhiChu = '" + ghiChu + "' Where DotKhamID = '" + DotKhamID + "'";
+            data.CommandText = m_SQL;
+            data.CommandType = System.Data.CommandType.Text;
+            data.ExecuteNonQuery();
+        }
+        public void updateLoiDan(String DotKhamID, String loiDan)
+        {
+            LibDataDB2.ASDataProvider data = new LibDataDB2.ASDataProvider();
+            String m_SQL = "Update PKDK.DotKham set LoiDan = '" + loiDan + "' Where DotKhamID = '" + DotKhamID + "'";
+            data.CommandText = m_SQL;
+            data.CommandType = System.Data.CommandType.Text;
             data.ExecuteNonQuery();
         }
         public DataTable getListTaiKham(DateTime ngayTK)
@@ -80,7 +102,7 @@ namespace QLPK.DataAccess
         public DataTable getCacLanKham(String maBN)
         {
             LibDataDB2.ASDataProvider data = new LibDataDB2.ASDataProvider();
-            String m_SQL = "Select DotKhamID, Ngay, ChanDoan From PKDK.DotKham Where MaBN = '" + maBN + "' Order By Ngay Desc";
+            String m_SQL = "Select DotKhamID, Ngay, ChanDoan, GhiChu From PKDK.DotKham Where MaBN = '" + maBN + "' Order By Ngay Desc";
             data.CommandText = m_SQL;
             data.CommandType = System.Data.CommandType.Text;
             return data.GetDataTable();
@@ -145,6 +167,18 @@ namespace QLPK.DataAccess
             data.CommandText = m_SQL;
             data.CommandType = CommandType.Text;
             return data.GetDataTable();
+        }
+        public String getChanDoanCuoi(String maBN)
+        {
+            LibDataDB2.ASDataProvider data = new LibDataDB2.ASDataProvider();
+            String m_SQL = "Select * From PKDK.DotKham Where DotKhamID = (SELECT MAX(DOTKHAMID) FROM PKDK.DOTKHAM WHERE MABN = '" + maBN +"')";
+            data.CommandText = m_SQL;
+            data.CommandType = System.Data.CommandType.Text;
+            DataRow dr = data.GetDataRow();
+            if (dr != null)
+                return dr["ChanDoan"].ToString();
+            else
+                return "";
         }
     }
 }

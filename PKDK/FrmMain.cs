@@ -59,25 +59,27 @@ namespace PKDK
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            MdiClient ctlMDI;
+            this.BackgroundImage = Image.FromFile("Background.jpg");
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            //MdiClient ctlMDI;
 
             // Loop through all of the form's controls looking
             // for the control of type MdiClient.
-            foreach (Control ctl in this.Controls)
-            {
-                try
-                {
-                    // Attempt to cast the control to type MdiClient.
-                    ctlMDI = (MdiClient)ctl;
+            //foreach (Control ctl in this.Controls)
+            //{
+            //    try
+            //    {
+            //        // Attempt to cast the control to type MdiClient.
+            //        ctlMDI = (MdiClient)ctl;
 
-                    // Set the BackColor of the MdiClient control.
-                    ctlMDI.BackColor = this.BackColor;
-                }
-                catch (InvalidCastException exc)
-                {
-                    // Catch and ignore the error if casting failed.
-                }
-            }
+            //        // Set the BackColor of the MdiClient control.
+            //        ctlMDI.BackColor = this.BackColor;
+            //    }
+            //    catch (InvalidCastException exc)
+            //    {
+            //        // Catch and ignore the error if casting failed.
+            //    }
+            //}
             ribbonControl1.SelectedPage = ribbonKhamBenh;
             stsHomNay.Caption = String.Format("Hôm nay, {0} ngày {1} tháng {2} năm {3}", getThu(), DateTime.Today.Day, DateTime.Today.Month, DateTime.Today.Year);
             btnDangXuat_ItemClick(null, null);
@@ -118,7 +120,7 @@ namespace PKDK
         private void btnDichVu_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             ThietLap.FrmGiaDichVu frm = new ThietLap.FrmGiaDichVu();
-            frm.LoaiDVID = "01";
+            frm.LoaiDVID = "04";
             frm.TenLoaiDV = "Dịch vụ KCB";
             frm.ShowDialog();
         }
@@ -185,7 +187,9 @@ namespace PKDK
 
         private void btnThuoc_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            ThietLap.FrmSanPham frm = new ThietLap.FrmSanPham();
+            ThietLap.FrmThuoc frm = new ThietLap.FrmThuoc();
+            frm.LoaiDVID = "01";
+            frm.TenLoaiDV = "Thuốc, hóa chất";
             frm.ShowDialog();
         }
 

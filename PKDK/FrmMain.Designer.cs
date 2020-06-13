@@ -54,7 +54,6 @@
             this.btnDnhSachChoThu = new DevExpress.XtraBars.BarButtonItem();
             this.btnDanhSachDaThu = new DevExpress.XtraBars.BarButtonItem();
             this.btnThuDichVu = new DevExpress.XtraBars.BarButtonItem();
-            this.btnThuThuoc = new DevExpress.XtraBars.BarButtonItem();
             this.btnThuBacSi = new DevExpress.XtraBars.BarButtonItem();
             this.btnThuNguoiBenh = new DevExpress.XtraBars.BarButtonItem();
             this.ribbonHeThong = new DevExpress.XtraBars.Ribbon.RibbonPage();
@@ -100,7 +99,6 @@
             this.btnDnhSachChoThu,
             this.btnDanhSachDaThu,
             this.btnThuDichVu,
-            this.btnThuThuoc,
             this.btnThuBacSi,
             this.btnThuNguoiBenh});
             this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
@@ -112,7 +110,7 @@
             this.ribbonKhamBenh,
             this.ribbonPage1});
             this.ribbonControl1.RibbonStyle = DevExpress.XtraBars.Ribbon.RibbonControlStyle.Office2010;
-            this.ribbonControl1.Size = new System.Drawing.Size(824, 144);
+            this.ribbonControl1.Size = new System.Drawing.Size(834, 144);
             this.ribbonControl1.StatusBar = this.ribbonStatusBar1;
             // 
             // btnDangXuat
@@ -142,7 +140,7 @@
             // stsTacGia
             // 
             this.stsTacGia.Alignment = DevExpress.XtraBars.BarItemLinkAlignment.Right;
-            this.stsTacGia.Caption = "Copyright ©  2018 by Doan Van Thanh - Tel. 0946459989";
+            this.stsTacGia.Caption = "Copyright ©  2019 by Doan Van Thanh - Tel. 0946 459 989";
             this.stsTacGia.Id = 4;
             this.stsTacGia.Name = "stsTacGia";
             // 
@@ -313,15 +311,6 @@
             this.btnThuDichVu.Name = "btnThuDichVu";
             this.btnThuDichVu.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThuDichVu_ItemClick);
             // 
-            // btnThuThuoc
-            // 
-            this.btnThuThuoc.Caption = "Thuốc";
-            this.btnThuThuoc.Id = 24;
-            this.btnThuThuoc.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("btnThuThuoc.ImageOptions.Image")));
-            this.btnThuThuoc.ImageOptions.LargeImage = ((System.Drawing.Image)(resources.GetObject("btnThuThuoc.ImageOptions.LargeImage")));
-            this.btnThuThuoc.Name = "btnThuThuoc";
-            this.btnThuThuoc.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnThuThuoc_ItemClick);
-            // 
             // btnThuBacSi
             // 
             this.btnThuBacSi.Caption = "Theo Bác sĩ";
@@ -404,7 +393,7 @@
             this.ribbonPageGroup5,
             this.ribbonPageGroup6});
             this.ribbonPage1.Name = "ribbonPage1";
-            this.ribbonPage1.Text = "Thanh toán";
+            this.ribbonPage1.Text = "Chi phí";
             // 
             // ribbonPageGroup5
             // 
@@ -416,20 +405,19 @@
             // ribbonPageGroup6
             // 
             this.ribbonPageGroup6.ItemLinks.Add(this.btnThuDichVu);
-            this.ribbonPageGroup6.ItemLinks.Add(this.btnThuThuoc);
             this.ribbonPageGroup6.ItemLinks.Add(this.btnThuNguoiBenh);
             this.ribbonPageGroup6.Name = "ribbonPageGroup6";
-            this.ribbonPageGroup6.Text = "Thống kê";
+            this.ribbonPageGroup6.Text = "Thống kê thu";
             // 
             // ribbonStatusBar1
             // 
             this.ribbonStatusBar1.ItemLinks.Add(this.stsTacGia);
             this.ribbonStatusBar1.ItemLinks.Add(this.stsHomNay);
-            this.ribbonStatusBar1.ItemLinks.Add(this.stsTenDangNhap);
+            this.ribbonStatusBar1.ItemLinks.Add(this.stsTenDangNhap, true);
             this.ribbonStatusBar1.Location = new System.Drawing.Point(0, 429);
             this.ribbonStatusBar1.Name = "ribbonStatusBar1";
             this.ribbonStatusBar1.Ribbon = this.ribbonControl1;
-            this.ribbonStatusBar1.Size = new System.Drawing.Size(824, 32);
+            this.ribbonStatusBar1.Size = new System.Drawing.Size(834, 32);
             // 
             // defaultLookAndFeel1
             // 
@@ -442,9 +430,7 @@
             this.Appearance.Options.UseBackColor = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImageLayoutStore = System.Windows.Forms.ImageLayout.Center;
-            this.BackgroundImageStore = global::PKDK.Properties.Resources.LacHong;
-            this.ClientSize = new System.Drawing.Size(824, 461);
+            this.ClientSize = new System.Drawing.Size(834, 461);
             this.Controls.Add(this.ribbonStatusBar1);
             this.Controls.Add(this.ribbonControl1);
             this.IsMdiContainer = true;
@@ -497,7 +483,6 @@
         private DevExpress.XtraBars.BarButtonItem btnDnhSachChoThu;
         private DevExpress.XtraBars.BarButtonItem btnDanhSachDaThu;
         private DevExpress.XtraBars.BarButtonItem btnThuDichVu;
-        private DevExpress.XtraBars.BarButtonItem btnThuThuoc;
         private DevExpress.XtraBars.Ribbon.RibbonPageGroup ribbonPageGroup6;
         private DevExpress.XtraBars.BarButtonItem btnThuBacSi;
         private DevExpress.XtraBars.BarButtonItem btnThuNguoiBenh;

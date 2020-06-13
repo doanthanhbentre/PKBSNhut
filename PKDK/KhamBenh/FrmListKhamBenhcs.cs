@@ -52,6 +52,7 @@ namespace PKDK.KhamBenh
         private void btnNew_Click(object sender, EventArgs e)
         {
             FrmPhieuKham frm = new FrmPhieuKham();
+            frm.NgayKham = DateTime.Now;
             frm.ShowDialog();
             loadData();
         }
@@ -74,6 +75,11 @@ namespace PKDK.KhamBenh
             lblTongSo.Text = m_Total.ToString();
             btnDelete.Enabled = m_Total > 0;
             btnEdit.Enabled = m_Total > 0;
+        }
+
+        private void gridControl1_DoubleClick(object sender, EventArgs e)
+        {
+            btnEdit_Click(null, null);
         }
     }
 }
